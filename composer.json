@@ -1,6 +1,7 @@
 {
     "name": "mehmetbeyhz/easy-json-mapper",
     "description": "PHP Easy Json Mapper",
+    "version": "1.0",
     "type": "library",
     "license": "MIT",
     "authors": [
