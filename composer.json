@@ -1,0 +1,19 @@
+{
+    "name": "mehmetbeyhz/easy-json-mapper",
+    "description": "PHP Easy Json Mapper",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mehmetbeyhz",
+            "email": "mehmetbeyhz@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "EJM\\" : "src"
+        }
+    }
+}
