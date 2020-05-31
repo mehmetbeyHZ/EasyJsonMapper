@@ -1,0 +1,35 @@
+{
+  "username": "mehmetbeyhz",
+  "full_name": "Mehmet Emin Karakaş",
+  "mail" : {
+    "contact" : "mehmetbeyhz@gmail.com"
+  },
+  "books": [
+    {
+      "book_name": "Alice Harikalar Diyarında",
+      "writer" : "Lewis Carroll"
+    },
+    {
+      "book_name" : "Beyaz Diş",
+      "writer" : "Jack London"
+    },
+    {
+      "book_name" : "The Alchemist",
+      "writer" : "Paulo Coelcho"
+    }
+  ],
+  "social" : [
+    {
+      "social_media" : "instagram",
+      "link": "instagram.com"
+    },
+    {
+      "social_media" : "facebook",
+      "link": "facebook.com"
+    },
+    {
+      "social_media" : "twitter",
+      "link" : "twitter.com"
+    }
+  ]
+}
