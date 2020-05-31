@@ -1,5 +1,10 @@
 Easy JSON Mapper.
 
+Install 
+```
+composer require mehmetbeyhz/easy-json-mapper:dev-master
+```
+
 ```php
 <?php 
 
