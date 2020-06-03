@@ -33,7 +33,7 @@ class MainMapper
     protected function initData()
     {
         foreach ($this->mapData as $key => $propertyValue) {
-            $upperKey = 'set'.$this->buildStringKey($key);
+            $upperKey = 'set'.self::buildStringKey($key);
             if (array_key_exists($key, $this->arrayData)) {
                 if ($this->propertyIsCorrect($propertyValue)) {
                     $this->$upperKey($this->arrayData[$key]);
@@ -102,7 +102,7 @@ class MainMapper
      * @param $key
      * @return string
      */
-    protected function buildStringKey($key): string
+    public static function buildStringKey($key): string
     {
         if (strpos($key, '_')) {
             $myMap = array_map(static function ($item) {
@@ -166,5 +166,15 @@ class MainMapper
     public function __unset($name)
     {
         return null;
+    }
+
+    public function asJson()
+    {
+        return json_encode($this->arrayData);
+    }
+
+    public function asArray()
+    {
+        return $this->arrayData;
     }
 }
