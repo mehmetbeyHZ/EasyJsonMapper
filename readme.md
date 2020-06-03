@@ -54,3 +54,36 @@ foreach($user->getFriends() as $friend)
     echo $friend->getFriendMail();
 }
 ```
+
+## Json To PHP Class (Auto)
+```php
+$jtc = new \EJM\JsonToClass(json_encode([
+    'username' => "mehmet",
+    "age"   => 40,
+    "full_name" => "karakas",
+    "mails" => [
+        [
+            "email" => "mehmet@gmail.com",
+            "subject" => "test"
+        ],
+        [
+            "email" => "mehmet@gmail.com",
+            "subject" => "test"
+        ],
+        [
+            "email" => "mehmet@gmail.com",
+            "subject" => "test"
+        ]
+    ]
+]), "Users");
+
+foreach ($jtc->createClassBody() as $cs)
+{
+    print_r($cs);
+    echo "\n\n";
+}
+
+```
+#### Response
+
+![alt text](https://i.ibb.co/jJkJ2Pn/Screenshot-from-2020-06-03-21-52-46.png " Json To Php")
