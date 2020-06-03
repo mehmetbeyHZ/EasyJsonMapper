@@ -57,6 +57,9 @@ foreach($user->getFriends() as $friend)
 
 ## Json To PHP Class (Auto)
 ```php
+<?php
+
+header("Content-Type: text/plain");
 $jtc = new \EJM\JsonToClass(json_encode([
     'username' => "mehmet",
     "age"   => 40,
