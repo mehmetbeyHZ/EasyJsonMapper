@@ -17,12 +17,14 @@ class MainMapper
 
     /**
      * MainMapper constructor.
-     * @param array $arrayData
      */
-    public function __construct(array $arrayData)
+    public function __construct($arrayData)
     {
         $class = get_class($this);
-        $this->arrayData = $arrayData;
+        if (is_array($arrayData))
+        {
+            $this->arrayData = $arrayData;
+        }
         $this->mapData   = $class::MAP;
         $this->initData();
     }
