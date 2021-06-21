@@ -22,7 +22,7 @@ class User extends MainMapper
 /**
  * Class Book
  * @method getName()
- * @method boolean hasName()
+ * @method boolean hasSurname()
  */
 class Book extends MainMapper{
     const MAP = [
@@ -46,4 +46,4 @@ $u = new User([
 
 
 
-var_dump($u->getBooks()[0]->hasName() ? "yes" : "no");
+var_dump($u->getBooks()[0]->hasSurname() ? "yes" : "no");

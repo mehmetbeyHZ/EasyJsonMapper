@@ -72,7 +72,6 @@ class MainMapper
 
     }
 
-
     /**
      * @param $property
      * @return bool
