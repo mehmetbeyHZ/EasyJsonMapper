@@ -9,6 +9,7 @@ class Property
         'string',
         'int',
         'bool',
+        'boolean',
         'float'
     ];
 }

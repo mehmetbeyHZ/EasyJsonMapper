@@ -49,6 +49,7 @@ class JsonToClass
             $buildMap .= "/**\n";
             foreach ($classValue as $methodInfo)
             {
+
                 $cropMethod = explode(" ",$methodInfo);
                 $isClassName = count($cropMethod) === 6;
                 $put = ($isClassName) ? $cropMethod[3] : null;

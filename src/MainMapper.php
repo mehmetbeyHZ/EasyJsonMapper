@@ -26,40 +26,58 @@ class MainMapper
             $this->arrayData = $arrayData;
         }
         $this->mapData   = $class::MAP;
-        $this->initData();
+        $this->init();
     }
 
-    /**
-     *
-     */
-    protected function initData()
-    {
-        foreach ($this->mapData as $key => $propertyValue) {
-            $upperKey = 'set'.self::buildStringKey($key);
-            if (array_key_exists($key, $this->arrayData)) {
-                if ($this->propertyIsCorrect($propertyValue)) {
-                    $this->$upperKey($this->arrayData[$key]);
-                } elseif ($this->isArrayClass($propertyValue)) {
-                    if (is_array($this->arrayData[$key]) && $this->isClass($this->getSafeClassName($propertyValue))) {
-                        $arrayDataBuilder = [];
-                        foreach ($this->arrayData[$key] as $subData) {
-                            $classInstance = $this->getSafeClassName($propertyValue);
-                            $arrayDataBuilder[] = new $classInstance($subData);
-                        }
-                        $this->$upperKey($arrayDataBuilder);
-                    } else {
-                        $this->$upperKey([]);
-                    }
-                } elseif ($this->isClass($propertyValue)) {
-                    $this->$upperKey(new $propertyValue($this->arrayData[$key]));
-                } else {
-                    $this->$upperKey('');
-                }
-            } else {
-                $this->$upperKey(($this->isArrayClass($propertyValue)) ? [] : null);
+    protected function init(){
+
+        foreach ($this->mapData as $key => $value){
+            $set     = 'set'.self::buildStringKey($key);
+            $hasKey  = array_key_exists($key,$this->arrayData);
+
+
+            if (!$hasKey){
+                $this->$set(($this->isArrayClass($value)) ? [] : null);
+                continue;
             }
+
+            if ($this->propertyIsCorrect($value)){
+                $this->$set($this->arrayData[$key]);
+                continue;
+            }
+
+            if ($this->isArrayClass($value) && $this->isClass($this->getSafeClassName($value))){
+                $arrayDataBuilder = [];
+                foreach ($this->arrayData[$key] as $itemKey => $itemValue){
+
+                    if (is_int($itemKey)){
+                        $arrayDataBuilder[] = $itemValue;
+                        continue;
+                    }
+
+                    $class = $this->getSafeClassName($value);
+                    $arrayDataBuilder[] = new $class($itemValue);
+                }
+                $this->$set($arrayDataBuilder);
+                continue;
+            }
+
+            if ($this->isArrayClass($value)){
+                $this->$set([]);
+            }
+
+            if ($this->isClass($value)){
+                $this->$set(new $value($this->arrayData[$key]));
+                continue;
+            }
+
+
+            $this->$set('');
+
         }
+
     }
+
 
     /**
      * @param $property
