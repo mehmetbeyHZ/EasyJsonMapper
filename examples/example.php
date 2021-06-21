@@ -8,6 +8,7 @@ require '../vendor/autoload.php';
  * Class User
  * @method string getUsername()
  * @method \Book[] getBooks()
+ * @method boolean hasBooks()
  */
 class User extends MainMapper
 {
@@ -18,13 +19,31 @@ class User extends MainMapper
     ];
 }
 
+/**
+ * Class Book
+ * @method getName()
+ * @method boolean hasName()
+ */
 class Book extends MainMapper{
-    const MAP = [];
+    const MAP = [
+        'name' => 'string'
+    ];
 }
 
 $u = new User([
     "username" => 'mehmet',
     'name' => 'Mehmet',
     'has_username' => 'ok',
-    'books' => [ 'Book1','Book2']
+    'books' => [
+        [
+            'name' => 'Book1'
+        ],
+        [
+            'name' => 'Book2'
+        ]
+    ]
 ]);
+
+
+
+var_dump($u->getBooks()[0]->hasName() ? "yes" : "no");

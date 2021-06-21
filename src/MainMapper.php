@@ -49,12 +49,6 @@ class MainMapper
             if ($this->isArrayClass($value) && $this->isClass($this->getSafeClassName($value))){
                 $arrayDataBuilder = [];
                 foreach ($this->arrayData[$key] as $itemKey => $itemValue){
-
-                    if (is_int($itemKey)){
-                        $arrayDataBuilder[] = $itemValue;
-                        continue;
-                    }
-
                     $class = $this->getSafeClassName($value);
                     $arrayDataBuilder[] = new $class($itemValue);
                 }
