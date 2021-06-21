@@ -41,7 +41,6 @@ class Social extends MainMapper
 }
 
 $user = new User($data);
-//print_r($user);
 
 print_r($user->getUsername() . "\n");
 print_r($user->getFullName() . "\n");

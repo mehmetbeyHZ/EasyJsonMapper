@@ -132,6 +132,13 @@ class MainMapper
 
             $this->$var_name = $arguments[0];
         }
+
+        if (preg_match('/^has(.+)/',$name,$matches)){
+            $var_name = $matches[1];
+
+            return isset($this->$var_name);
+        }
+
         return null;
     }
 
@@ -179,4 +186,5 @@ class MainMapper
     {
         return $this->arrayData;
     }
+
 }
